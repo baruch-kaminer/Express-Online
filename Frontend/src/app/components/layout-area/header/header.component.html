@@ -1,0 +1,19 @@
+<div class="header" >
+    
+    <div class="logo">
+        <!-- <a [href]="href"><img src="../../../../assets/images/logo.png" alt="logo"></a>  -->
+        <a href="/products"></a> 
+        <img src="../../../../assets/images/logo.png" alt="logo">
+    </div>
+    
+
+    <div *ngIf="search" class="search"> 
+        <app-search-product></app-search-product>
+    </div>
+
+    <div class="auth">
+        <app-auth-menu></app-auth-menu> 
+        <!-- {{}} -->
+     </div>
+
+</div>

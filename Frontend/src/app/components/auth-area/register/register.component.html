@@ -1,0 +1,129 @@
+<div class="register">
+    
+    <div class="imgLogo">
+      <img src="../../../../assets/images/logo.png" alt="">
+    </div>
+
+<div class="form">
+  <h2>הרשמה לחנות</h2>
+
+  <mat-stepper [linear]="isLinear"  #stepper>
+    <mat-step [stepControl]="firstFormGroup" state="first"
+    [completed]="false"
+    [editable]="false">
+      <form [formGroup]="firstFormGroup" (ngSubmit)="userTest()">
+        <ng-template matStepLabel>תעודת זהות ואימייל</ng-template>
+        <div class=" mat-mdc-form-field-infix ng-tns-c14-1 inp" >
+          <mat-form-field appearance="fill">
+            <mat-label>תעודת זהות</mat-label>
+            <input matInput formControlName="userId" type="number" name="userId" [(ngModel)]="user.userId" min="999999" max="9999999999" pattern="" required >
+          </mat-form-field>
+          <span class="errors" *ngIf="userId.invalid && userId.errors?.['required'] && userId.touched " > תעודת זהות חובה</span>
+          <span class="errors" *ngIf="userId.invalid && userId.errors?.['min'] && userId.touched " >מינימום 7 ספרות</span>
+          <span class="errors" *ngIf="userId.invalid && userId.errors?.['max'] && userId.touched " >מקסימום 10 ספרות</span>
+        </div>
+        
+        
+          <div class="inp">
+            <mat-form-field  appearance="fill">
+              <mat-label>אימייל</mat-label>
+              <input matInput  formControlName="email" name="email" [(ngModel)]="user.email" 
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+            </mat-form-field>
+              <span class="errors" *ngIf="email.errors?.['required'] && email.touched">אימייל חובה</span>
+              <span class="errors" *ngIf="email.errors?.['pattern'] && email.touched"> אימייל לא תקין</span>        
+          </div>
+
+        
+          <div class="inp">
+            <mat-form-field appearance="fill">
+              <mat-label>סיסמה</mat-label>
+              <input matInput  formControlName="password"  name="password" [(ngModel)]="user.password" minlength="4" maxlength="20" required>
+            </mat-form-field>
+            <span class="errors" *ngIf="password.errors?.['required'] && password.touched">סיסמה חובה</span>
+            <span class="errors" *ngIf="password.errors?.['minlength'] && password.touched">מינימום 4 תווים</span> 
+          </div>
+        
+          <div class="inp">
+            <mat-form-field appearance="fill">
+              <mat-label>אימות סיסמה</mat-label>
+              <input matInput  formControlName="passwordA" name="passwordAuthentication" [(ngModel)]="passwordAuthentication" required>
+            </mat-form-field>
+            <span class="errors" *ngIf="passwordA.errors?.['required'] && passwordA.touched && !errorPassword">אימות סיסמה חובה</span>
+            <span class="errors" *ngIf="errorPassword">סיסמאות לא תואמות</span>
+          </div>
+        
+
+        <div class="inp btnNext" >
+         
+          <button mat-button  color="primary">שלב הבא</button>
+          <p class="errors errorValidate"  *ngIf="errorValidate">תעודת זהות או האימייל כבר רשומים.</p>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup"
+
+     label="שם וכתובת">
+      <form [formGroup]="secondFormGroup" (ngSubmit)="register()">
+
+
+        <div class="inp">
+          <mat-form-field appearance="fill">
+            <mat-label>שם פרטי</mat-label>
+            <input matInput formControlName="firstName" name="firstName" [(ngModel)]="user.firstName" minlength="2" maxlength="20" required  >
+          </mat-form-field>
+          <span class="errors" *ngIf="firstName?.errors?.['required'] && firstName.touched">שם פרטי חובה</span>
+          <span class="errors" *ngIf="firstName?.errors?.['minlength'] && firstName.touched">מינימום 2 אותיות</span>
+        </div>
+        
+
+        <div class="inp">
+          <mat-form-field appearance="fill">
+            <mat-label>שם משפחה</mat-label>
+            <input matInput formControlName="lastName" name="lastName" [(ngModel)]="user.lastName"  minlength="2" maxlength="20" required>
+          </mat-form-field>
+          <span class="errors" *ngIf="lastName?.errors?.['required'] && lastName.touched">שם משפחה חובה</span>
+          <span class="errors" *ngIf="lastName?.errors?.['minlength'] && lastName.touched">מינימום 2 אותיות</span>
+        </div>
+
+        
+       
+        <div class="inp">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>עיר</mat-label>
+            <input type="text" matInput [formControl]="city" [matAutocomplete]="auto" 
+             name="city" [(ngModel)]="nameCity" required>
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option?.name}}
+              </mat-option>
+            </mat-autocomplete>
+            <span class="errors" *ngIf="city?.errors?.['required'] && city.touched">עיר חובה</span>
+          </mat-form-field>
+        </div>
+        
+
+        
+
+        <div class="inp">
+          <mat-form-field appearance="fill">
+            <mat-label>רחוב</mat-label>
+            <input matInput formControlName="street" name="street" [(ngModel)]="user.street" minlength="2" maxlength="20" required>
+          </mat-form-field>
+          <span class="errors" *ngIf="street?.errors?.['required'] && street.touched">רחוב חובה</span>
+          <span class="errors" *ngIf="street?.errors?.['minlength'] && street.touched">מינימום 2 אותיות</span>
+        </div>
+        
+     
+          <div class="inp btnNext">
+            <button color="primary" mat-button matStepperNext>הירשם</button>
+          </div>
+        
+      </form>
+    </mat-step>
+
+  </mat-stepper>
+</div>
+    
+    
+</div>

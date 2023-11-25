@@ -1,0 +1,33 @@
+<div class="login">
+
+   
+
+
+    <div class="login-box" >
+        <h2>כניסה לחנות</h2>
+        <form (ngSubmit)="login()" #loginForm="ngForm" autocomplete="off">
+          <div class="user-box">
+            <input type="text" name="email" [(ngModel)]="credentials.email" required #email="ngModel">
+            <div class="errors" *ngIf="email.errors?.['required'] && email.touched">שדה אימייל הוא חובה.</div>
+            <label>אימייל</label>
+          </div>
+          <div class="user-box">
+            <input type="password" name="password" [(ngModel)]="credentials.password" required #password="ngModel">
+            <div class="errors" *ngIf="password.errors?.['required'] && password.touched">שדה סיסמה הוא חובה.</div>
+            <label>סיסמה</label>
+          </div>
+          <div class="btnLogin">
+            <button >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                כניסה
+              </button>
+          </div>
+          
+          <div class="errors validate" *ngIf="errorValidate">אימייל או סיסמה שגויים.</div>
+        </form>
+      </div>
+
+</div>

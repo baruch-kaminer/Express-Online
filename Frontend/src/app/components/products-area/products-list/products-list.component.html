@@ -1,0 +1,45 @@
+<div class="container">
+
+    <header>
+        <app-header [search]="true"></app-header>
+    </header>
+
+    <div class="categories">
+        <ul class="categoriesUl">
+            <li (click)="displaySelectedCategory( c.categoryId)" *ngFor="let c of categories">
+                <span class="active" [ngClass]="{'active': isBtnActive === c.categoryId}" (click)="toggleBtn(c.categoryId)">{{c.categoryName}}</span>
+            </li>
+        </ul>
+    </div>
+    
+
+    
+    <div  *ngIf="!loader" class="productsLIst">
+        
+        <div *ngIf="auth.user.role === 'Admin' " class="addProduct">
+            <button mat-flat-button color="primary" (click)="addProduct()">הוספת מוצר<mat-icon>library_add</mat-icon></button>
+        </div>
+    
+        <div class="productArea">
+            <div class="productCard" *ngIf="isCart">
+                <span *ngIf="hideCart" class="width"></span>
+                <app-product-card  *ngFor="let p of products" [product]="p" [cartId]="cart.cartId"></app-product-card>  
+              </div>
+              
+              <div *ngIf="isCart"  class="cart">
+                  <app-cart [cart]="cart" ></app-cart>
+              </div>
+        </div>
+    
+        
+    </div>
+
+    <footer>
+        <a href="mailto: b60617@gmail.com">BK</a>
+        &copy;
+    </footer>
+    <div *ngIf="loader" class="divLoader">
+        <span  class="loader"></span>  
+    </div>
+</div>
+

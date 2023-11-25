@@ -1,0 +1,32 @@
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;600;700;800&display=swap');
+  @import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
+
+
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans Hebrew', sans-serif;
+}
+
+a{
+    text-decoration: unset;
+    color: unset;
+}
+
+
+html, body { height: 100%; }
+body {
+     margin: 0;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+li{
+  list-style-type: none;
+}
+
+
+

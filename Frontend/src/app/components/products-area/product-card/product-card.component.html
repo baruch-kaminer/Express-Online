@@ -1,0 +1,23 @@
+<div class="product" >
+
+    <div class="img">
+        <img [crossOrigin]="imgSrc + product.imageName" [src]="imgSrc + product.imageName" alt="">
+    </div>
+
+        <div>
+            <b>{{ product.productName }}</b>
+        </div>
+        <div>
+            {{ product.price | currency:"ILS" }}
+            
+
+        </div>
+     <button class="btnItem btn" *ngIf="!changeAmount && user.role === 'User'" (click)="addProductForCart()" title="הוסף לסל"><mat-icon>add_shopping_cart</mat-icon></button>
+    <button class="btnItem btn" *ngIf="user.role === 'Admin' " (click)="editProduct()"><mat-icon>edit</mat-icon></button>
+ 
+        <div class="amount" *ngIf="changeAmount">
+            <input class="btnItem inp"   (change)="updateAmountItems()"  type="number" name="amount" [(ngModel)]="amount">
+        </div>
+
+     
+</div>

@@ -1,0 +1,58 @@
+
+
+ <div class="addProduct">
+
+        <div class="imgLogo">
+            <img src="../../../../assets/images/logo.png" alt="">
+        </div>
+        
+
+    <form class="example-form" (ngSubmit)="send()">
+        <h2>טופס הוספת מוצר </h2>
+
+        <div class="inp">
+            <mat-form-field class="example-full-width">
+              <mat-label>שם המוצר</mat-label>
+              <input matInput  name="productName" [(ngModel)]="product.productName" >
+            </mat-form-field>
+        </div>
+
+        <div class="inp">
+            <mat-form-field appearance="fill">
+                <mat-label>קטגוריה</mat-label>
+                <mat-select name="categoryId"  [(ngModel)]="product.categoryId">
+                  <mat-option *ngFor="let c of categories" [value]="c.categoryId">
+                    {{c.categoryName}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="inp">
+            <mat-form-field class="example-full-width">
+              <mat-label>מחיר </mat-label>
+              <input matInput  type="number" name="price" [(ngModel)]="product.price" >
+            </mat-form-field>
+        </div>
+
+        <div class="inp">
+            <mat-form-field class="example-full-width">
+                <mat-label>{{labelImage}}</mat-label>
+                <div>
+                   <mat-toolbar>
+                    <input matInput  readonly name="name" />
+                    <button mat-flat-button color="primary"><mat-icon>add_photo_alternate</mat-icon></button>
+                    <input [(ngModel)]="img" (change)="changeLabelImage()"  id="uploadFile" type="file" name="image" accept="image/*" #image >
+                </mat-toolbar> 
+                </div>
+                
+            </mat-form-field>
+        </div>
+      
+        <button class="btnAdd" mat-button  color="primary">שמירה</button>
+        </form>
+
+        <div class="btnReturn">
+            <a routerLink="/products">לחזרה לחנות</a>
+        </div>
+</div>

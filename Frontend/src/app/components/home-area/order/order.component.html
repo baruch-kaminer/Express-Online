@@ -1,0 +1,90 @@
+
+<div class="container">
+
+    <div class="header">
+       <app-header [search]="false"></app-header> 
+    </div>
+    <div class="orderArea">
+        <a class="returnHome" *ngIf="father && !success" routerLink="/products">
+            <button mat-raised-button><mat-icon>keyboard_tab</mat-icon>חזור לחנות</button>
+            <!-- <span>לחזרה לחנות</span>      -->
+        </a>
+        <app-cart class="cart" *ngIf="cart" [cart]="cart" [father]="father"></app-cart>
+        <div class="order">
+            <div *ngIf="!success">
+                <!-- <button (click)="orderMe()">ההזמנה עבורך? {{user.firstName}}</button> -->
+    
+                
+                <h2>פרטי לקוח ותשלום</h2>
+    
+    
+                <form class="example-form" (ngSubmit)="sendOrder()">
+                    
+    
+    
+                    <section class="example-section ">
+                        <mat-checkbox class="example-margin" color="primary" name="orderUser"  (click)="orderMe()" name="orderUser" >
+                            <span class="check">כתובת המשלוח זהה לכתובת המשתמש</span>
+                         </mat-checkbox>
+                    </section>
+    
+    
+                    <mat-form-field class="example-full-width">
+                        <mat-label> עיר</mat-label>
+                        <input matInput [formControl]="city"
+                        [errorStateMatcher]="matcher" name="city" 
+                        [(ngModel)]="order.city">
+                        <mat-error *ngIf="city.hasError('required')">עיר <strong>חובה</strong></mat-error>
+                        <mat-error >מינימום 2 אותיות</mat-error>
+                    </mat-form-field>
+
+                  
+                    
+                     <mat-form-field class="example-full-width">
+                        <mat-label>רחוב </mat-label>
+                        <input matInput [formControl]="street"
+                        [errorStateMatcher]="matcher" type="text" name="street"
+                        [(ngModel)]="order.street">
+                        <mat-error *ngIf="street.hasError('required')">רחוב <strong>חובה</strong></mat-error>
+                        <mat-error >מינימום 2 אותיות</mat-error>
+                    </mat-form-field>
+
+                   <mat-form-field class="example-full-width">
+                        <mat-label> תאריך משלוח</mat-label>
+                        <input matInput [formControl]="date" [matDatepicker]="picker"
+                         name="date" [errorStateMatcher]="matcher" 
+                         [min]="currentDate"
+                         [(ngModel)]="order.date" 
+                         (click)="valDate()">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-error *ngIf="date.hasError('required')">תאריך משלוח <strong>חובה</strong></mat-error>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>כרטיס אשראי </mat-label>
+                        <input matInput [formControl]="creditCard" 
+                        type="number" name="creditCard" [errorStateMatcher]="matcher" 
+                        [(ngModel)]="order.creditCard">
+                        <mat-error *ngIf="creditCard.hasError('required')">כרטיס אשראי  <strong>חובה</strong></mat-error>
+                        <mat-error *ngIf="creditCard.hasError('min') && !creditCard.hasError('required')">מינימום  8 ספרות</mat-error>
+                        <mat-error *ngIf="creditCard.hasError('max') && !creditCard.hasError('required')">מקסימום  16 ספרות</mat-error>
+                    </mat-form-field> 
+    
+                     
+                    <div class="btnOrder"> <button mat-raised-button color="primary">לתשלום<span *ngIf="loader" class="loader"></span>
+                        <mat-icon>credit_card</mat-icon>
+                    </button></div>
+                </form>
+            </div>
+            <div class="success" *ngIf="success">
+                <h2>קנייתך בוצעה בהצלחה!</h2>
+                <a mat-raised-button color="primary" routerLink="/home">אישור</a>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>

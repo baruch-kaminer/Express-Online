@@ -1,0 +1,16 @@
+<div class="welcomeBody">
+    <div class="welcome ">
+        <section>
+            <img src="../../../../assets/images/logo.png" >
+            <h1>האתר המוביל להזמנת מוצרי מזון אונליין</h1>
+            <h2 class="gold">חויית קניה שלא הכרתם!</h2>
+            <a class="btnRegister" routerLink="/register">להתחלת קניה הירשמו כאן</a>
+            <p>מספר ההזמנות שבוצעו באתר: <span *ngIf="!loader">{{sumOrders}}</span><span *ngIf="loader" class="loader"></span></p>
+            <p>מספר המוצרים באתר: <span *ngIf="!loader">{{sumProducts}}</span><span *ngIf="loader" class="loader"></span></p> 
+        </section>
+    </div>
+    
+    <div class="login">
+        <app-login></app-login>
+    </div>
+</div>

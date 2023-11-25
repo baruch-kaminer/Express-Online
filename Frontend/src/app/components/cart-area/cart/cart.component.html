@@ -1,0 +1,70 @@
+<div class="cartContainer" *ngIf="auth.user.role === 'User' && btnDelAll">
+    
+    <div *ngIf="btnDelAll && !father " class="headerCart">
+        <div class="sumProductInCart">
+            <p>{{cartItems?.length}} מוצרים</p>
+            <mat-icon>shopping_cart</mat-icon>
+        </div>
+        <button class=" deleteAll" *ngIf="btnDelAll && !father" (click)="deleteAllCartItems()"><mat-icon class="iconDel">delete_outline</mat-icon></button>
+        <button class="btnFinish"><a  routerLink="/order">סיום קנייה</a></button>
+        <p>{{sumPrice | currency:"ILS"}}</p>
+        
+        <div class="iconHide" (click)="hideCart()">
+            <mat-icon *ngIf="hide">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="!hide">keyboard_arrow_up</mat-icon>
+        </div>
+    </div>
+    
+    
+    
+    <div class="container" *ngIf="!hide">
+        
+        <div class="divloader" *ngIf="loader && !hide && !father && btnDelAll">
+           <span  class="loader"></span> 
+        </div>
+    <div class="cart partial-search" *ngIf="!hide">
+        
+
+      
+      <div class="cartItems"  id="htmlData" #htmlData>
+        <h2 *ngIf="btnDelAll && father">סיכום הזמנה</h2>
+        <ul *ngFor="let item of cartItems" class="partial-search itemCard" >
+            <li *ngIf="item.imageName">
+                <img [crossOrigin]="imgSrc + item.imageName" [src]="imgSrc + item.imageName" alt="">
+                <button class="deleteItem" *ngIf="!father" (click)="deleteItem(item.cartItemsId)" ><mat-icon>delete</mat-icon></button>
+            </li>
+
+            
+            <div *ngIf="father" class="partial-search">
+                <div class="search-input nosubmit">
+                    <input class="nosubmit" [(ngModel)]="searchText" type="search" placeholder="חפש מוצר...">
+                </div>
+                <li class="text-contaniner productName" [innerHtml]="item.productName | highlighter:searchText:'partial'"></li>
+            </div>
+
+            <li *ngIf="!father" class="productName"> {{item.productName}}</li>
+
+            <div class="amountEndPrice">
+                <li class="amount">{{item.amount}} יחי'</li>
+                <li class="price"> {{item.price | currency:"ILS"}}</li>  
+            </div>
+            
+        </ul>
+        <div *ngIf="btnDelAll && father" class="sumOrder">
+            <span>סה"כ לתשלום: {{sumPrice | currency:"ILS"}}</span>
+        </div>
+        
+    </div>
+        
+       <a class="btnFinishAll" *ngIf="btnDelAll && !father " routerLink="/order"> <span>סיום קניה </span><span>{{sumPrice | currency:"ILS"}}</span></a>
+    </div>
+    
+    <div class="col-md-4 text-right">
+
+        <button mat-raised-button *ngIf="btnDelAll && father" class="btn btn-success btn-block pdf" (click)="openPDF()">
+            <mat-icon>picture_as_pdf</mat-icon>
+            הורדת חשבונית </button>
+    </div>
+</div>
+</div>
+

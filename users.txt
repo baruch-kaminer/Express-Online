@@ -1,0 +1,7 @@
+user:  
+    email: useruser
+    password: user
+
+admin:
+    email: admin
+    password: admin

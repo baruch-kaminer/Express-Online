@@ -1,0 +1,19 @@
+<div class="menu">
+
+    <div class="userMenu" *ngIf="user.isLoggedIn() && userMenu">
+        <div class="pointer" (click)="displayUserMenu()"><mat-icon>close</mat-icon></div>
+        <div>{{ user.user.firstName }} {{ user.user.lastName}}</div> 
+        <a class="pointer logout" (click)="user.logout()">התנתק </a>
+        
+    </div>
+
+    <div *ngIf="!userMenu" class="iconUser pointer" (click)="displayUserMenu()" >
+        <mat-icon>account_circle</mat-icon>
+    </div>
+
+    <div *ngIf="!user.isLoggedIn()">
+        <span>Welcome Guest</span> |
+        <a  routerLink="/login">login </a> | <a routerLink="/register" >Register </a>
+    </div>
+
+</div>

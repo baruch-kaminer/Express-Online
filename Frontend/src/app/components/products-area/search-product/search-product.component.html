@@ -1,0 +1,11 @@
+<div>
+    <div class="search">
+       <form class="nosubmit">
+        <input  class="nosubmit" type="search" name="searchProducts" [(ngModel)]="name" (input)="search()" placeholder="חפש מוצרים..."/>
+    </form>
+
+    <div  *ngIf="loader" class="custom-loader"></div> 
+    </div>
+    
+
+</div>

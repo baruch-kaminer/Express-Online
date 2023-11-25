@@ -1,0 +1,27 @@
+
+<div class="welcomeUserBody">
+   <div class="welcomeUser">
+
+    <div class="img">
+        <img src="../../../../assets/images/logo.png" alt="">
+    </div>
+
+        <div *ngIf="!cartByUser && !orderByUser">
+            <h1>{{timeNow}} {{user.firstName}}, </h1>
+            <p *ngIf="!cartByUser && !orderByUser">ברוך הבא לקניה הראשונה שלך</p>
+        </div>
+
+        <div *ngIf="cartByUser && !cartByUser?.state">
+            <h1>{{timeNow}} {{user.firstName}}, </h1>
+            <p >יש לך הזמנה פתוחה מתאריך {{cartByUser?.date | date : 'd/M/yy'}},</p>
+            <p>בסכום של {{sumPriceCart | currency:"ILS" }} </p>
+        </div>
+
+        <div *ngIf="!cartByUser && orderByUser">
+            <h1>{{timeNow}} {{user.firstName}}, </h1>
+            <p > ההזמנה האחרונה שלכם היתה בתאריך {{orderByUser?.date | date : 'dd/MM/yy'}}</p>
+        </div>
+
+        <a  class="btn" href="/products">{{textBtn}}</a>
+    </div> 
+</div>

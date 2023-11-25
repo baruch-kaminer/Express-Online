@@ -1,0 +1,24 @@
+<div class="cartItem">
+    <!-- <table> -->
+        <!-- <tr>
+            <th></th>
+            <th>כמות</th>
+            <th>מוצר</th>
+            <th>מחיר</th>
+        </tr> -->
+        <!-- <tr>
+            <td *ngIf="isImg"><img [crossOrigin]="imgSrc + imageName" [src]="imgSrc + imageName" alt=""></td>
+            <td>{{cartItem.amount}}</td>
+            <td>{{cartItem.productName}}</td>
+            <td>{{cartItem.price}}</td>
+        </tr>
+    </table> -->
+    <ul>
+        <li *ngIf="isImg"><img [crossOrigin]="imgSrc + imageName" [src]="imgSrc + imageName" alt=""></li>
+        <li>{{cartItem.productName}}</li>
+        <div>
+            <li class="amount">{{cartItem.amount}} יחי'</li>
+            <li class="price">{{cartItem.price | currency:"ILS"}}</li>
+        </div>
+    </ul>
+</div>

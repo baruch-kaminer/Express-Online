@@ -1,0 +1,6 @@
+<div class="home">
+    
+    <!-- <app-products-list></app-products-list> -->
+    <app-welcome *ngIf="!user.isLoggedIn()"></app-welcome>
+    <app-welcome-user *ngIf="user.isLoggedIn()"></app-welcome-user>
+</div>

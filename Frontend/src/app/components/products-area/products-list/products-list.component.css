@@ -1,0 +1,250 @@
+.container{
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgb(227, 229, 233);
+  font-size: 1.2rem;
+  
+}
+
+
+.productsLIst{
+  width: 100%;
+  margin-top: 10%;
+  min-height: max-content;
+  
+}
+
+header{
+  width: 100%;
+  height: 10%;
+  position: fixed;
+  z-index: 33;
+}
+
+
+
+footer{
+  height: 5%;
+  background-color: white;
+  text-align: center;
+  color: blue;
+}
+
+.categories{
+  /* margin-top: 10%; */
+  position: fixed;
+  top: 10%;
+  /* margin-top: -30px; */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 8%;
+  background: rgb(237, 236, 236);
+  box-shadow: 0 0 5px gray;
+  font-weight: 500;
+  z-index: 3;
+}
+
+
+.categoriesUl{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  vertical-align: baseline;
+  grid-column: span 4;
+}
+
+li{
+  cursor: pointer;
+}
+
+li:hover{
+  font-weight: 700;
+}
+
+
+.active{
+  font-weight: 700;
+}
+
+.productArea{
+  width: 100%;
+  height: 100%;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.productCard{
+  /* min-width: 80%; */
+  /* max-width: 100%; */
+  position: static;
+  max-width: 100%;
+  /* min-width: 80%; */  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  /* flex-basis: 100%; */
+  justify-content:center ;
+  /* align-items: baseline; */
+  padding: 50px;
+  flex-basis: 100%;
+  flex: 1 1 auto;
+}
+
+.width{
+  position: absolute;
+  top: -100%;
+  left: -100%;
+}
+
+.productCard:has(> .width){
+  max-width: 75%;
+}
+@media only screen and (max-width: 1000px){
+  .productCard:has(> .width){
+    max-width: 65%;
+  }
+}
+@media only screen and (max-width: 775px){
+  .productCard:has(> .width){
+    max-width: 55%;
+  }
+}
+
+.cart{
+  position: fixed;
+  left: 1%;
+  top: 25%;
+ max-width: 240px;
+
+  margin-left: 15px;
+}
+
+
+.addProduct{
+  position: fixed;
+  left: 5%;
+  top: 20%;
+  z-index: 3;
+} 
+@media only screen and (max-width: 500px){
+  header{
+    height: 20%; 
+  }
+  .categories{
+    top: 20%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    
+  }
+  .productArea{
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+  .productCard{
+    margin-bottom: 20px;
+    max-width:100% ;
+  }
+  .cart{
+    position: relative;
+    margin-top: 35%;
+
+  }
+
+  .categories::-webkit-scrollbar {
+    width: 0.6em;
+  }
+   
+  .categories::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    
+  }
+   
+  .categories::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  border-radius: 3px;
+  }
+}
+
+
+.divLoader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 40px;
+    /* margin-top: 20%; */
+}
+
+.loader {
+    color:black;
+    font-size: 10px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+
+    
+    text-indent: -9999em;
+    animation: mulShdSpin 1.3s infinite linear;
+    transform: translateZ(0);
+  }
+  
+  @keyframes mulShdSpin {
+    0%,
+    100% {
+      box-shadow: 0 -3em 0 0.2em, 
+      2em -2em 0 0em, 3em 0 0 -1em, 
+      2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 -1em, -3em 0 0 -1em, 
+      -2em -2em 0 0;
+    }
+    12.5% {
+      box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 
+      3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 -1em, -3em 0 0 -1em, 
+      -2em -2em 0 -1em;
+    }
+    25% {
+      box-shadow: 0 -3em 0 -0.5em, 
+      2em -2em 0 0, 3em 0 0 0.2em, 
+      2em 2em 0 0, 0 3em 0 -1em, 
+      -2em 2em 0 -1em, -3em 0 0 -1em, 
+      -2em -2em 0 -1em;
+    }
+    37.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+       3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, 
+       -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+       3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, 
+       -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+       3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, 
+       -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+      box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 
+      3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+      box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 
+      3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
+      -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+  }
+    
