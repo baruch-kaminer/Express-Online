@@ -5,8 +5,8 @@ import {Injectable} from '@angular/core';
     providedIn: 'root'
 })
 export class AppConfig{
-    // private baseUrl = process.env['NODE_ENV'] === 'production' ? '' : 'http://localhost:3001/api/';
-    private baseUrl = 'http://localhost:3001/api/';
+    private baseUrl = 'https://express-online-cc7375506a7b.herokuapp.com/api/';
+    // private baseUrl = 'http://localhost:3001/api/';
     public registerUrl = this.baseUrl + 'auth/register';
     public loginUrl = this.baseUrl + 'auth/login';
     public isIdTakenUrl = this.baseUrl + 'userId/';
