@@ -50,15 +50,15 @@ server.use('/api', cartsItemControllers);
 
 server.use('/api', ordersControllers );
 
-server.use(express.static(path.join(__dirname, '..', '..', '..', 'Frontend', 'dist')));
+server.use(express.static(path.join(__dirname, '..', '..', '..', 'Frontend', 'fronend', 'dist')));
 
 server.get('/*', (req, res) => {
-res.sendFile(path.join(__dirname, '..', '..', '..', 'Frontend', 'dist', 'index.html'));
+res.sendFile(path.join(__dirname, '..', '..', '..', 'Frontend', 'dist', 'fronend', 'index.html'));
 });
 
-server.get('/*', (req, res) => {
-res.sendFile(path.resolve(__dirname, '..', '..', '..', 'Frontend', 'dist', 'index.html'));
-});
+// server.get('/*', (req, res) => {
+// res.sendFile(path.resolve(__dirname, '..', '..', '..', 'Frontend', 'dist', 'index.html'));
+// });
 
 server.use('*', routeNotFound);
 
