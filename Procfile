@@ -1,0 +1,1 @@
+web: nodemon Backend/src/app.ts
