@@ -50,10 +50,10 @@ server.use('/api', cartsItemControllers);
 
 server.use('/api', ordersControllers );
 
-server.use(express.static(path.join(__dirname, '..', '..', '..', 'Frontend', 'dist', 'fronend')));
+server.use(express.static(path.join(__dirname, '..', '..', 'Frontend', 'dist', 'fronend')));
 
 server.get('/*', (req, res) => {
-res.sendFile(path.join(__dirname, '..', '..', '..', 'Frontend', 'dist', 'fronend', 'index.html'));
+res.sendFile(path.join(__dirname, '..', '..', 'Frontend', 'dist', 'fronend', 'index.html'));
 });
 
 // server.get('/*', (req, res) => {
