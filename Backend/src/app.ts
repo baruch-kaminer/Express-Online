@@ -13,6 +13,7 @@ import categoriesControllers from "./6-controllers/categories-controllers";
 import cartsControllers from "./6-controllers/carts-controllers";
 import cartsItemControllers from "./6-controllers/cartsItem-controllers";
 import ordersControllers from "./6-controllers/orders-controllers";
+import path from "path";
 
 
 
@@ -26,7 +27,7 @@ server.use(expressRateLimit({
 
 server.use(cors({ origin: appConfig.siteUrl } ));
 
-server.use(helmet());
+// server.use(helmet());
 
 server.use( express.json());
 
@@ -49,8 +50,18 @@ server.use('/api', cartsItemControllers);
 
 server.use('/api', ordersControllers );
 
+server.use(express.static(path.join(__dirname, '..', '..', 'Frontend', 'build')));
+
+server.get('/*', (req, res) => {
+res.sendFile(path.join(__dirname, '..', '..', 'Frontend', 'build', 'index.html'));
+});
+
+server.get('/*', (req, res) => {
+res.sendFile(path.resolve(__dirname, '..', '..', 'Frontend', 'build', 'index.html'));
+});
+
 server.use('*', routeNotFound);
 
 server.use(catchAll);
 
-server.listen(appConfig.port, () => console.log(`Listening to http://localhost:${appConfig.port}`))
+server.listen( process.env.PORT || appConfig.port, () => console.log(`Listening to http://localhost:${appConfig.port}`))

@@ -28,7 +28,7 @@
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
   }
-  
+
   .login-box h2 {
     margin: 0 0 30px;
     padding: 0;
@@ -187,6 +187,13 @@
     }
     50%,100% {
       bottom: 100%;
+    }
+  }
+  
+
+  @media only screen and (max-width: 500px){
+    .login-box h2{
+      margin: 0;
     }
   }
   

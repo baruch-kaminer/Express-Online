@@ -36,7 +36,6 @@
 }
 
 .btnRegister{
-    /* border: 1px solid; */
     display: inline-block;
     padding: 10px;
     margin: 5px 0;
@@ -60,6 +59,7 @@
   .welcomeBody{
     flex-direction: column;
     flex-wrap: wrap;
+    height: 130%;
   }
   .welcome{
     width: 100%;
@@ -69,7 +69,7 @@
   }
   .login{
     position: absolute;
-    top: 20%;
+    top: 45%;
     left: 42%;
   }
 }

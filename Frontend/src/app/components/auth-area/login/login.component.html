@@ -7,12 +7,12 @@
         <h2>כניסה לחנות</h2>
         <form (ngSubmit)="login()" #loginForm="ngForm" autocomplete="off">
           <div class="user-box">
-            <input type="text" name="email" [(ngModel)]="credentials.email" required #email="ngModel">
+            <input type="text" name="email" [(ngModel)]="credentials.email" required #email="ngModel" autocomplete="email">
             <div class="errors" *ngIf="email.errors?.['required'] && email.touched">שדה אימייל הוא חובה.</div>
             <label>אימייל</label>
           </div>
           <div class="user-box">
-            <input type="password" name="password" [(ngModel)]="credentials.password" required #password="ngModel">
+            <input type="password" name="password" [(ngModel)]="credentials.password" required #password="ngModel" autocomplete="password">
             <div class="errors" *ngIf="password.errors?.['required'] && password.touched">שדה סיסמה הוא חובה.</div>
             <label>סיסמה</label>
           </div>

@@ -23,7 +23,8 @@
       "ES2022",
       "dom"
     ],
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "types": ["node"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

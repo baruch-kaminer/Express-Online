@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
     providedIn: 'root'
 })
 export class AppConfig{
+    // private baseUrl = process.env['NODE_ENV'] === 'production' ? '' : 'http://localhost:3001/api/';
     private baseUrl = 'http://localhost:3001/api/';
     public registerUrl = this.baseUrl + 'auth/register';
     public loginUrl = this.baseUrl + 'auth/login';
